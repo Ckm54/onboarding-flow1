@@ -1,6 +1,6 @@
 # onboarding_screen
 
-A new Flutter project.
+Flutter demo project -- Test display onboarding screen only on initial app lauch after first install
 
 ## Getting Started
 
