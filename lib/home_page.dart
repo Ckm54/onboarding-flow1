@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onboarding_screen/util/emoticon_face.dart';
+import 'package:onboarding_screen/util/exercise_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,9 +12,9 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.apps), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.message), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
         ],
         selectedItemColor: Colors.blue[600],
         unselectedItemColor: Colors.grey[600],
@@ -145,11 +146,12 @@ class HomePage extends StatelessWidget {
                     topRight: Radius.circular(50)),
                 child: Container(
                   padding:
-                      const EdgeInsets.only(top: 24.0, left: 24.0, right: 24.0),
-                  color: Colors.grey[100],
+                      const EdgeInsets.only(top: 28.0, left: 24.0, right: 24.0),
+                  color: Colors.grey[200],
                   child: Center(
                       child: Column(
                     children: [
+                      // Heading
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
@@ -160,6 +162,42 @@ class HomePage extends StatelessWidget {
                           ),
                           Icon(Icons.more_horiz)
                         ],
+                      ),
+
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+
+                      // List of exercises
+                      Expanded(
+                        child: ListView(
+                          children: const <Widget>[
+                            ExerciseTile(
+                              bgColor: Colors.orange,
+                              exerciseName: 'Speaking Skills',
+                              icon: Icons.favorite,
+                              numberOfExercises: 15,
+                            ),
+                            ExerciseTile(
+                              bgColor: Colors.blue,
+                              exerciseName: 'Reading Skills',
+                              icon: Icons.person,
+                              numberOfExercises: 8,
+                            ),
+                            ExerciseTile(
+                              bgColor: Colors.green,
+                              exerciseName: 'Writing Skills',
+                              icon: Icons.star,
+                              numberOfExercises: 20,
+                            ),
+                            ExerciseTile(
+                              bgColor: Colors.pink,
+                              exerciseName: 'Speaking Skills',
+                              icon: Icons.favorite,
+                              numberOfExercises: 15,
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   )),
