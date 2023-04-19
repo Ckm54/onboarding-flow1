@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(25.0),
             child: Column(
               children: [
+                // Intro & greetings section
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -48,7 +49,40 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
+                ),
+
+                const SizedBox(
+                  height: 25,
+                ),
+
+                // searchbar
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.blue[600],
+                      borderRadius: BorderRadius.circular(12.0)),
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                    children: const <Widget>[
+                      Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Search",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 25,
+                ),
+
+                // How do you feel section
               ],
             ),
           ),
