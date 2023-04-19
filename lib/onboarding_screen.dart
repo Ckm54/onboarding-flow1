@@ -3,6 +3,7 @@ import 'package:onboarding_screen/home_page.dart';
 import 'package:onboarding_screen/intro_pages/intro_page1.dart';
 import 'package:onboarding_screen/intro_pages/intro_page2.dart';
 import 'package:onboarding_screen/intro_pages/intro_page3.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -14,7 +15,27 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   // controller to keep track of page we are on
-  final PageController _controller = PageController();
+  late PageController _controller;
+
+  @override
+  void initState() {
+    _controller = PageController(initialPage: 0);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  // store onboarding info in sharedPrefs
+  _storeOnboardingInfo() async {
+    print("Shared pref called");
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('userOnboarded', true);
+    print(prefs.getBool('userOnboarded'));
+  }
 
   // Keep track if we are on last page
   bool onLastPage = false;
@@ -55,7 +76,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   // next
                   onLastPage
                       ? GestureDetector(
-                          onTap: () {
+                          onTap: () async {
+                            await _storeOnboardingInfo();
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
